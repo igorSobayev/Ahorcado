@@ -1,0 +1,71 @@
+[
+    {
+        "palabra" : "ordenador",
+        "letras" : [
+            "o",
+            "r",
+            "d",
+            "e",
+            "n",
+            "a",
+            "d",
+            "o",
+            "r"
+        ],
+        "pistas" : "2"
+    },
+    {
+        "palabra" : "mesa",
+        "letras" : [
+            "m",
+            "e",
+            "s",
+            "a"
+        ],
+        "pistas" : "1"
+    },
+    {
+        "palabra" : "almocafre",
+        "letras" : [
+            "a",
+            "l",
+            "m",
+            "o",
+            "c",
+            "a",
+            "f",
+            "r",
+            "e"
+        ],
+        "pistas" : "2" 
+    },
+    {
+        "palabra" : "electroencefalografista",
+        "letras" : [
+            "e",
+            "l",
+            "e",
+            "c",
+            "t",
+            "r",
+            "o",
+            "e",
+            "n",
+            "c",
+            "e",
+            "f",
+            "a",
+            "l",
+            "o",
+            "g",
+            "r",
+            "a",
+            "f",
+            "i",
+            "s",
+            "t",
+            "a"
+        ],
+        "pistas" : "4"
+    }
+]
