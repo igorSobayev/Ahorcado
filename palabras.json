@@ -12,7 +12,12 @@
             "o",
             "r"
         ],
-        "pistas" : "2"
+        "pistas" : [
+            {
+                "letra" : "a",
+                "posicion" : "6"
+            }
+        ]
     },
     {
         "palabra" : "mesa",
@@ -22,7 +27,12 @@
             "s",
             "a"
         ],
-        "pistas" : "1"
+        "pistas" : [
+            {
+                "letra" : "s",
+                "posicion" : "3"
+            }
+        ]
     },
     {
         "palabra" : "almocafre",
@@ -37,7 +47,16 @@
             "r",
             "e"
         ],
-        "pistas" : "2" 
+        "pistas" : [
+            {
+                "letra" : "e",
+                "posicion" : "9"
+            },
+            {
+                "letra" : "l",
+                "posicion" : "2"
+            }
+        ]
     },
     {
         "palabra" : "electroencefalografista",
@@ -66,6 +85,15 @@
             "t",
             "a"
         ],
-        "pistas" : "4"
+        "pistas" : [
+            {
+            "letra" : "i",
+            "posicion" : "20"
+            },
+            {
+                "letra" : "g",
+                "posicion" : "16"
+            }
+        ]
     }
 ]
