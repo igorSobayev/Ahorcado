@@ -5,24 +5,33 @@ window.onload = function () {
     const ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
 
+    // aciertos del usuario
     var aciertos_totales = 0;
+    // aciertos permitidos
     var aciertos = 0;
+    // letras de la palabra
     var letras = '';
+    // contador fallos
     var fallos = 0;
+    // palabra del juego
     var palabra_juego = '';
+    // si has ganado o perdido
     var resultado = '';
     
+    // evento para jugar
     document.querySelector("#button").addEventListener("click", cargarPalabra);
 
+    // evento para cada tecla
     $(".tecla").click(function () {
         pulsacion(this.innerHTML);
     })
 
+    // evento para reiniciar
     $("#reiniciar").click(function () {
         reiniciar();
     })
 
-    
+    // carga de palabra
     function cargarPalabra() {
 
         const xhr = new XMLHttpRequest();
@@ -60,11 +69,15 @@ window.onload = function () {
         xhr.send();
     }
     
+    // accion cuando se pulsa una tecla
     function jugar(pulsacion) {
 
         if (aciertos_totales != aciertos) {
+            // control de posicion de letras si hay una o mas
             var posicion = [];
             var letra_actual = 'nada';
+            // miro si la letra esta en la palabra y si lo esta guardo su posicion en
+            // un array y la letra que es AQUI MIRO SI ESTA LA LETRA O NO
             for (i = 0; i <= letras.length; i++) {
                 if (letras[i] === pulsacion) {
                     posicion.push(i + 1);
@@ -72,15 +85,21 @@ window.onload = function () {
                 }
             }
     
+            // miro si el for fue bien y acertamos la letra
             if (letra_actual != 'nada') {
+                // si hay mas de una letra
                 if (posicion.length > 1) {
                     for (i = 0; i < posicion.length; i++) {
+                        // creo cadena del selector
                         let posicion_letra = ".letra:nth-child(" + posicion[i] + ")";
                         $(posicion_letra)[0].innerHTML = letra_actual;
                         $(posicion_letra).addClass("adivinado");
                     }
+                    // sumo todos los aciertos
                     aciertos_totales += posicion.length;
+                    // vacio las posiciones
                     posicion = [];
+                    // elimino la letra actual
                     letra_actual = '';
                     
                 } else {
@@ -90,19 +109,24 @@ window.onload = function () {
                     aciertos_totales += 1;
                     
                 }
+                // quito evento al cual hago click
                 $("." + pulsacion).addClass("correcto").unbind("click");
                 
-    
+                // si no esta 
             } else {
+                // sumo un fallo
                 fallos += 1;
                 $(".fallo")[0].innerHTML = fallos;
+                // creo la sentencia con la que trabajo
                 let query = $("." + pulsacion);
-                query.addClass("error").unbind("click");
+                query.addClass("error").unbind("click").css("cursor", "default");
                 
+                // llamo la funcion pintar con los fallos 
                 pintar(fallos);
             }
         }
 
+        // si he ganado o no
         if (aciertos_totales === aciertos) {
             resultado = "¡Muy bien, has ganado!";
             $(".resultado")[0].innerHTML = resultado;
@@ -112,6 +136,7 @@ window.onload = function () {
 
     }
 
+    // pintar pistas
     function pintar_pistas(pistas) {
         if (pistas.length > 1) {
             for (i = 0; i <= pistas.length; i++) {
@@ -125,6 +150,7 @@ window.onload = function () {
 
     }
 
+    // control de fallos
     function pintar(fallos) {
         switch (fallos) {
             case 1:
@@ -165,6 +191,7 @@ window.onload = function () {
         }
     }
 
+    // al pulsar reiniciar
     function reiniciar() {
         fallos = 0;
         aciertos_totales = 0;
@@ -189,11 +216,13 @@ window.onload = function () {
         cargarPalabra();
     }
 
+    // al pulsar
     function pulsacion(valor) {
         var pulsacion = valor;
         jugar(pulsacion);
     }
 
+    // limpiar canvas al reiniciar
     function limpiar() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         var w = canvas.width;
